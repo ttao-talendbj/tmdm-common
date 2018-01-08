@@ -429,6 +429,20 @@
                     <artifactId>jacoco-maven-plugin</artifactId>
                     <version>0.7.5.201505241946</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.talend.tools</groupId>
+                    <artifactId>talend-tools-maven-plugin</artifactId>
+                    <version>1.0.3</version>
+                    <configuration>
+                        <atTheEnd>false</atTheEnd>
+                        <serverId>blackduck-mdm</serverId>
+                        <blackduckUrl>https://blackduck.talend.com</blackduckUrl>
+                        <blackduckName>Talend MDM (TMDM)</blackduckName>
+                        <systemVariables>
+                            <detect.output.path>$rootProject/.blackduck</detect.output.path>
+                        </systemVariables>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -1407,6 +1421,19 @@
                             </execution>
                         </executions>
                     </plugin>
+                    <plugin>
+                        <groupId>org.talend.tools</groupId>
+                        <artifactId>talend-tools-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>hub-detect</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>hub-detect</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
                 </plugins>
             </build>
         </profile>
@@ -1481,6 +1508,33 @@
                                 <phase>verify</phase>
                                 <goals>
                                     <goal>report</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <!-- For local build -->
+            <id>blackduck</id>
+            <activation>
+                <property>
+                    <name>mdm.build.blackduck</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.talend.tools</groupId>
+                        <artifactId>talend-tools-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>hub-detect</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>hub-detect</goal>
                                 </goals>
                             </execution>
                         </executions>
