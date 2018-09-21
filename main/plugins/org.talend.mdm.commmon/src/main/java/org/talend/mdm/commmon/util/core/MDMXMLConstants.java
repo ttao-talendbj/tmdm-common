@@ -34,5 +34,13 @@ public final class MDMXMLConstants {
 
     public static final String FEATURE_EXTERNAL_PARAM_ENTITIES = "http://xml.org/sax/features/external-parameter-entities";
 
+    public static final String FEATURE_DEFER_NODE_EXP = "http://apache.org/xml/features/dom/defer-node-expansion";
+
     public static final String PROPERTY_IS_SUPPORT_EXT_ENTITY = "javax.xml.stream.isSupportingExternalEntities";
+
+    public static final String PROPERTY_SCHEMAL_LANGUAGE = "http://java.sun.com/xml/jaxp/properties/schemaLanguage";
+
+    public static final String PROPERTY_XML_SCHEMA = "http://www.w3.org/2001/XMLSchema";
+
+    public static final String PROPERTY_SCHEMA_SOURCE = "http://java.sun.com/xml/jaxp/properties/schemaSource";
 }
